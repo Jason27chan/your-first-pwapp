@@ -20,6 +20,7 @@
 
 const express = require('express');
 const fetch = require('node-fetch');
+require('dotenv').config();
 const redirectToHTTPS = require('express-http-to-https').redirectToHTTPS;
 
 // CODELAB: Change this to add a delay (ms) before the server responds.
@@ -141,6 +142,7 @@ function generateFakeForecast(location) {
 function getForecast(req, resp) {
   const location = req.params.location || '40.7720232,-73.9732319';
   const url = `${BASE_URL}/${API_KEY}/${location}`;
+  console.log(url);
   fetch(url).then((resp) => {
     return resp.json();
   }).then((data) => {
